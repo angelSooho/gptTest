@@ -1,3 +1,7 @@
+spring:
+  profiles:
+    include: secret
+
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor         # spring bean으로 저장될 이름
@@ -11,4 +15,4 @@ gpt:
   endpoint:
     gpt-free: https://api.openai.com/v1/completions
     gpt-charged: https://api.openai.com/v1/chat/completions
-  api-key: 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
+  api-key: ${secret.gpt.api-key}
