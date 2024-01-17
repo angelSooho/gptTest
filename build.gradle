@@ -45,6 +45,9 @@ dependencies {
 
 	// jasypt
 	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+
+	// google stt
+	implementation 'com.google.cloud:google-cloud-speech:4.28.0'
 }
 
 tasks.withType(KotlinCompile) {
