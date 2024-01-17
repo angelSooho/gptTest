@@ -1,6 +1,10 @@
 spring:
   profiles:
     include: secret
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 20MB
 
 jasypt:
   encryptor:
@@ -11,8 +15,9 @@ jasypt:
     key-obtention-iterations: 100000              # 암호화 키를 얻기 위한 반복 횟수: 값이 클수록 보안이 더 좋지만 암호화/복호화에 시간이 오래 걸림
     password: ${secret.jasypt.password}           # 암호화 키: 암호화 키를 외부에서 주입받음
 
-gpt:
+openai:
   endpoint:
     gpt-free: https://api.openai.com/v1/completions
     gpt-charged: https://api.openai.com/v1/chat/completions
+    whisper: https://api.openai.com/v1/audio/transcriptions
   api-key: ${secret.gpt.api-key}
