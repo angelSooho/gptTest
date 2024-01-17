@@ -3,16 +3,14 @@ package com.learning.gpt.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
-import static org.springframework.http.MediaType.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 @Configuration
 public class GptConfig {
 
-    @Value("${gpt.api-key}")
+    @Value("${openai.api-key}")
     private String apiKey;
 
     @Bean
@@ -22,7 +20,6 @@ public class GptConfig {
             request.getHeaders().add(
                     "Authorization"
                     ,"Bearer " + apiKey);
-            request.getHeaders().setContentType(APPLICATION_JSON);
             return execution.execute(request, body);
         });
 
