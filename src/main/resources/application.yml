@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    include: secret
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+  ai:
+    openai:
+      api-key: ${secret.gpt.api-key}
+      chat:
+        options:
+          model: gpt-3.5-turbo-0125
+          temperature: 0.7
+
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor                   # spring bean으로 저장될 이름
+    algorithm: ${secret.jasypt.algorithm}         # 암호화 알고리즘
+    pool-size: 2                                  # 암호화 요청을 담은 pool의 크기: 암호화, 복호화에 비용이 많이 들기 때문에 알고리즘 엔진을 재사용하는 것이 좋음
+    string-output-type: base64                    # 암호화된 문자열의 출력 형식
+    key-obtention-iterations: 100000              # 암호화 키를 얻기 위한 반복 횟수: 값이 클수록 보안이 더 좋지만 암호화/복호화에 시간이 오래 걸림
+    password: ${secret.jasypt.password}           # 암호화 키: 암호화 키를 외부에서 주입받음
+
+openai:
+  endpoint:
+    gpt-free: https://api.openai.com/v1/completions
+    gpt-paid: https://api.openai.com/v1/chat/completions
+    whisper: https://api.openai.com/v1/audio/transcriptions
+  api-key: ${secret.gpt.api-key}
+
+google:
+  credentials:
+    path: ${secret.google.credentials.path}
