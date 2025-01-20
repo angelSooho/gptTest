@@ -1,5 +1,6 @@
-OpenAI gpt api를 테스트하는 공간입니다.
+AI api를 테스트하는 공간입니다.
 
+# OpenAI GPT API
 
 ### ChatGptController api
 - /ai/gpt/chat
